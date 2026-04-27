@@ -89,7 +89,7 @@ public class DatabaseConnection {
 
         try {
 
-            Connection conn = thread.get()
+            Connection conn = thread.get();
 
             if (conn != null) {
 
