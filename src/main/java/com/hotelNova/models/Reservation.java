@@ -12,17 +12,20 @@ public class Reservation {
     private String status;
     private Guest guest;
     private Room room;
+    private User createdBy;
 
     public Reservation (Date checkIn,
                         Date checkOut,
                         String status,
                         Guest guest,
-                        Room room){
+                        Room room,
+                        User createdBy){
 
         setReservation(checkIn, checkOut);
         this.status = status;
         this.guest = guest;
         this.room = room;
+        this.createdBy = createdBy;
 
     }
 
@@ -32,9 +35,10 @@ public class Reservation {
                         double totalCost,
                         String status,
                         Guest guest,
-                        Room room ){
+                        Room room,
+                        User createdBy ){
 
-        this(checkIn, checkOut, status, guest, room);
+        this(checkIn, checkOut, status, guest, room, createdBy);
         this.id = id;
         this.totalCost = totalCost;
 
@@ -135,5 +139,13 @@ public class Reservation {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public User getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(User createdBy) {
+        this.createdBy = createdBy;
     }
 }
