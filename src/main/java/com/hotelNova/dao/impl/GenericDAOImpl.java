@@ -17,7 +17,7 @@ public abstract class GenericDAOImpl<T> implements GenericDAO<T> {
     protected final DatabaseConnection dc = DatabaseConnection.getInstance();
 
     //Query return:
-    protected abstract T mapRow(ResultSet rs);
+    protected abstract T mapRow(ResultSet rs) throws SQLException;
 
     //Get query:
     protected abstract String getSaveQuery ();
@@ -27,10 +27,10 @@ public abstract class GenericDAOImpl<T> implements GenericDAO<T> {
     protected abstract String getDeleteQuery ();
 
     //Set Query:
-    protected abstract void setSaveParams(PreparedStatement ps , T object);
-    protected abstract void setEditParams(PreparedStatement ps, T object);
-    protected abstract void setDeleteParams(PreparedStatement ps, String id);
-    protected abstract void setFindByParams(PreparedStatement ps, String value);
+    protected abstract void setSaveParams(PreparedStatement ps , T object) throws SQLException;
+    protected abstract void setEditParams(PreparedStatement ps, T object) throws SQLException;
+    protected abstract void setDeleteParams(PreparedStatement ps, String id) throws SQLException;
+    protected abstract void setFindByParams(PreparedStatement ps, String value) throws SQLException;
 
     @Override
     public Optional<T> findByIdOrName (String value) {
