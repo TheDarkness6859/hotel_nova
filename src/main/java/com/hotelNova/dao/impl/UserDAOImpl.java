@@ -68,31 +68,33 @@ public class UserDAOImpl extends  GenericDAOImpl<User> {
             try (PreparedStatement ps = conn.prepareStatement(SAVE, Statement.RETURN_GENERATED_KEYS)) {
 
                 setSaveParams(ps, user);
+                int rows = ps.executeUpdate();
 
-                try (ResultSet rs = ps.getGeneratedKeys()) {
+                if (rows > 0){
 
-                    if (rs.next()) {
+                    try (ResultSet rs = ps.getGeneratedKeys()) {
 
-                        LogManager.addLog("INFO", "User save correctly in database");
-                        user.setId(rs.getString(1));
-                        return true;
+                        if (rs.next()) {
 
+                            LogManager.addLog("INFO", "User save correctly in database");
+                            user.setId(rs.getString(1));
+                            return true;
 
-                    } else {
-
-                        LogManager.addLog("WARNING", "User cannot be saved in database");
-                        return false;
+                        }
 
                     }
 
                 }
+
+                LogManager.addLog("WARNING", "User cannot be saved in database");
+                return false;
 
             }
 
         } catch (SQLException err) {
 
             LogManager.addLog("ERROR", "failed to execute save" + err.getMessage());
-            throw new RuntimeException("Database error", err);
+            return false;
 
         }
 
