@@ -4,6 +4,7 @@ import com.hotelNova.models.Admin;
 import com.hotelNova.models.Guest;
 import com.hotelNova.models.Receptionist;
 import com.hotelNova.models.User;
+import com.hotelNova.utils.HashedPassword;
 import com.hotelNova.utils.LogManager;
 
 import java.sql.*;
@@ -103,7 +104,7 @@ public class UserDAOImpl extends  GenericDAOImpl<User> {
     @Override
     protected void setSaveParams(PreparedStatement ps, User object) throws SQLException {
         ps.setString(1, object.getUsername());
-        ps.setString(2, object.getPassword());
+        ps.setString(2, HashedPassword.hashedPassword(object.getPassword()));
         ps.setString(3, object.getRole());
     }
 
