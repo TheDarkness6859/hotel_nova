@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService {
             if (success) {
 
                 DatabaseConnection.commit();
-                LogManager.addLog("INFO", "Commit created correctly");
+                LogManager.addLog("INFO", "Commit created correctly in user service");
                 return true;
 
             }else {
@@ -100,7 +100,31 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean delete (String id) {
 
-        return userDAO.delete(id);
+        try {
+
+            DatabaseConnection.startTransaction();
+
+            if (userDAO.delete(id)) {
+
+                DatabaseConnection.commit();
+                LogManager.addLog("INFO", "Commit deleted correctly in user service");
+                return true;
+
+            }else {
+
+                DatabaseConnection.rollback();
+                LogManager.addLog("WARNING", "deleting rollback to save data");
+                return false;
+
+            }
+
+        } catch (SQLException err) {
+
+            DatabaseConnection.rollback();
+            LogManager.addLog("ERROR", "Error deleting user: " + err.getMessage());
+            return false;
+
+        }
 
     }
 
