@@ -67,4 +67,7 @@ public class Room {
         isAvailable = available;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
 }
