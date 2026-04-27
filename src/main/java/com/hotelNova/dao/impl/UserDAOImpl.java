@@ -7,34 +7,35 @@ import com.hotelNova.models.User;
 import com.hotelNova.utils.LogManager;
 
 import java.sql.*;
+import java.util.UUID;
 
-public class UserDAOImpl extends  GenericDAOImpl<User>{
+public class UserDAOImpl extends  GenericDAOImpl<User> {
 
     protected static final String SAVE = "INSERT INTO hotelnova.users (username, password, role) values (?, ?, ?)";
     protected static final String EDIT = "UPDATE hotelnova.users set username = ?, password = ?, role = ? WHERE id = ?";
 
     protected static final String FIND_BY =
             "SELECT u.*, g.first_name, g.last_name, g.email, g.phone, g.is_active " +
-            "FROM hotelnova.users u " +
-            "LEFT JOIN hotelnova.guests g ON u.id = g.id " +
-            "WHERE u.username = ? OR u.id = ?";
+                    "FROM hotelnova.users u " +
+                    "LEFT JOIN hotelnova.guests g ON u.id = g.id " +
+                    "WHERE u.username = ? OR u.id = ?";
 
     protected static final String FIND_ALL =
             "SELECT u.*, g.first_name, g.last_name, g.email, g.phone, g.is_active " +
-            "FROM hotelnova.users u " +
-            "LEFT JOIN hotelnova.guests g ON u.id = g.id";
+                    "FROM hotelnova.users u " +
+                    "LEFT JOIN hotelnova.guests g ON u.id = g.id";
 
     protected static final String DELETE = "DELETE FROM hotelnova.users WHERE id = ?";
 
     @Override
-    protected User mapRow (ResultSet rs) throws SQLException {
+    protected User mapRow(ResultSet rs) throws SQLException {
 
         String id = rs.getNString("id");
         String role = rs.getString("role");
         String username = rs.getString("username");
         String password = rs.getString("password");
 
-        if ("ADMIN".equalsIgnoreCase(role)){
+        if ("ADMIN".equalsIgnoreCase(role)) {
 
             return new Admin(id, username, password);
 
@@ -42,7 +43,7 @@ public class UserDAOImpl extends  GenericDAOImpl<User>{
 
             return new Receptionist(id, username, password);
 
-        }else {
+        } else {
 
             return new Guest(id,
                     username,
@@ -58,17 +59,17 @@ public class UserDAOImpl extends  GenericDAOImpl<User>{
     }
 
     @Override
-    public boolean save (User user){
+    public boolean save(User user) {
 
         try {
 
             Connection conn = dc.getConnection();
 
-            try(PreparedStatement ps = conn.prepareStatement(SAVE, Statement.RETURN_GENERATED_KEYS)){
+            try (PreparedStatement ps = conn.prepareStatement(SAVE, Statement.RETURN_GENERATED_KEYS)) {
 
                 setSaveParams(ps, user);
 
-                try(ResultSet rs = ps.getGeneratedKeys()){
+                try (ResultSet rs = ps.getGeneratedKeys()) {
 
                     if (rs.next()) {
 
@@ -77,7 +78,7 @@ public class UserDAOImpl extends  GenericDAOImpl<User>{
                         return true;
 
 
-                    }else {
+                    } else {
 
                         LogManager.addLog("WARNING", "User cannot be saved in database");
                         return false;
@@ -88,7 +89,7 @@ public class UserDAOImpl extends  GenericDAOImpl<User>{
 
             }
 
-        }catch (SQLException err){
+        } catch (SQLException err) {
 
             LogManager.addLog("ERROR", "failed to execute save" + err.getMessage());
             throw new RuntimeException("Database error", err);
@@ -121,6 +122,12 @@ public class UserDAOImpl extends  GenericDAOImpl<User>{
     @Override
     protected void setFindByParams(PreparedStatement ps, String value) throws SQLException {
         ps.setString(1, value);
+
+        try {
+            ps.setObject(2, UUID.fromString(value));
+        }catch (IllegalArgumentException err){
+            ps.setObject(2, null);
+        }
     }
 
     @Override
@@ -147,7 +154,5 @@ public class UserDAOImpl extends  GenericDAOImpl<User>{
     protected String getDeleteQuery() {
         return DELETE;
     }
-
-
 
 }
