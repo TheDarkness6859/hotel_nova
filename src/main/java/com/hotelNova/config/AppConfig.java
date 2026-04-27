@@ -12,7 +12,7 @@ public class AppConfig {
 
     private AppConfig () {
 
-        load("app.properties", appProps);
+        load("config.properties", appProps);
 
     }
 
