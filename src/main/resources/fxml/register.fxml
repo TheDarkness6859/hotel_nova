@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.hotelNova.views.RegisterController"
+      spacing="15" alignment="CENTER" style="-fx-padding: 30; -fx-background-color: #f0f0f0;">
+
+    <children>
+        <Text text="Registro de Huésped" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-fill: #2c3e50;"/>
+
+        <GridPane hgap="15" vgap="10" alignment="CENTER">
+            <children>
+                <Label text="Usuario:" GridPane.rowIndex="0" GridPane.columnIndex="0"
+                       style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                <TextField fx:id="usernameField" GridPane.rowIndex="0" GridPane.columnIndex="1"
+                          prefWidth="200" promptText="Nombre de usuario"/>
+
+                <Label text="Contraseña:" GridPane.rowIndex="1" GridPane.columnIndex="0"
+                       style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                <PasswordField fx:id="passwordField" GridPane.rowIndex="1" GridPane.columnIndex="1"
+                              prefWidth="200" promptText="Mínimo 6 caracteres"/>
+
+                <Label text="Confirmar:" GridPane.rowIndex="2" GridPane.columnIndex="0"
+                       style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                <PasswordField fx:id="confirmPasswordField" GridPane.rowIndex="2" GridPane.columnIndex="1"
+                              prefWidth="200" promptText="Repite contraseña"/>
+
+                <Label text="Nombre:" GridPane.rowIndex="3" GridPane.columnIndex="0"
+                       style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                <TextField fx:id="firstNameField" GridPane.rowIndex="3" GridPane.columnIndex="1"
+                          prefWidth="200" promptText="Tu nombre"/>
+
+                <Label text="Apellido:" GridPane.rowIndex="4" GridPane.columnIndex="0"
+                       style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                <TextField fx:id="lastNameField" GridPane.rowIndex="4" GridPane.columnIndex="1"
+                          prefWidth="200" promptText="Tu apellido"/>
+
+                <Label text="Email:" GridPane.rowIndex="5" GridPane.columnIndex="0"
+                       style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                <TextField fx:id="emailField" GridPane.rowIndex="5" GridPane.columnIndex="1"
+                          prefWidth="200" promptText="correo@ejemplo.com"/>
+
+                <Label text="Teléfono:" GridPane.rowIndex="6" GridPane.columnIndex="0"
+                       style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                <TextField fx:id="phoneField" GridPane.rowIndex="6" GridPane.columnIndex="1"
+                          prefWidth="200" promptText="Opcional"/>
+            </children>
+        </GridPane>
+
+        <Button fx:id="registerButton" text="Registrarse" prefWidth="150" prefHeight="40"
+                style="-fx-font-size: 14px; -fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold;"/>
+
+        <Button fx:id="backToLoginButton" text="Volver al Login" prefWidth="150" prefHeight="35"
+                style="-fx-font-size: 13px; -fx-background-color: #7f8c8d; -fx-text-fill: white;"/>
+
+        <Label fx:id="messageLabel" textFill="red" wrapText="true" maxWidth="300"/>
+    </children>
+</VBox>

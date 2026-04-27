@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.hotelNova.views.ReservationManagementController" 
+      spacing="15" style="-fx-padding: 20;">
+    
+    <children>
+        <Text text="Gestión de Reservas" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+        
+        <TabPane tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="Check-in">
+                    <content>
+                        <VBox spacing="15" style="-fx-padding: 20;">
+                            <children>
+                                <Text text="Registrar Nueva Reserva" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                                
+                                <GridPane hgap="15" vgap="10">
+                                    <children>
+                                        <Label text="ID Huésped:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                                        <TextField fx:id="guestIdField" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="150"/>
+                                        
+                                        <Label text="Habitación:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                                        <ComboBox fx:id="roomComboBox" GridPane.rowIndex="1" GridPane.columnIndex="1" prefWidth="200"/>
+                                        
+                                        <Label text="Check-in:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                                        <DatePicker fx:id="checkInDatePicker" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                                        
+                                        <Label text="Check-out:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                                        <DatePicker fx:id="checkOutDatePicker" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                                        
+                                        <Button fx:id="createReservationButton" text="Crear Reserva" 
+                                               GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
+                                    </children>
+                                </GridPane>
+                                
+                                <Label fx:id="reservationStatus" textFill="green"/>
+                            </children>
+                        </VBox>
+                    </content>
+                </Tab>
+                
+                <Tab text="Check-out">
+                    <content>
+                        <VBox spacing="15" style="-fx-padding: 20;">
+                            <children>
+                                <Text text="Procesar Check-out" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                                
+                                <TableView fx:id="activeReservationsTableView" prefHeight="300">
+                                    <columns>
+                                        <TableColumn fx:id="reservationIdColumn" text="ID Reserva" prefWidth="100"/>
+                                        <TableColumn fx:id="guestNameColumn" text="Huésped" prefWidth="150"/>
+                                        <TableColumn fx:id="roomNumberColumn" text="Habitación" prefWidth="80"/>
+                                        <TableColumn fx:id="checkInDateColumn" text="Check-in" prefWidth="100"/>
+                                        <TableColumn fx:id="checkOutDateColumn" text="Check-out" prefWidth="100"/>
+                                        <TableColumn fx:id="totalCostColumn" text="Costo Total" prefWidth="100"/>
+                                        <TableColumn fx:id="checkoutActionsColumn" text="Acciones" prefWidth="100"/>
+                                    </columns>
+                                </TableView>
+                                
+                                <Label fx:id="checkoutStatus" textFill="green"/>
+                            </children>
+                        </VBox>
+                    </content>
+                </Tab>
+                
+                <Tab text="Ver Reservas">
+                    <content>
+                        <VBox spacing="15" style="-fx-padding: 20;">
+                            <children>
+                                <Text text="Lista de Reservas" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                                
+                                <TableView fx:id="allReservationsTableView" prefHeight="300">
+                                    <columns>
+                                        <TableColumn fx:id="allReservationIdColumn" text="ID" prefWidth="80"/>
+                                        <TableColumn fx:id="allGuestColumn" text="Huésped" prefWidth="150"/>
+                                        <TableColumn fx:id="allRoomColumn" text="Habitación" prefWidth="80"/>
+                                        <TableColumn fx:id="allCheckInColumn" text="Check-in" prefWidth="100"/>
+                                        <TableColumn fx:id="allCheckOutColumn" text="Check-out" prefWidth="100"/>
+                                        <TableColumn fx:id="allStatusColumn" text="Estado" prefWidth="100"/>
+                                        <TableColumn fx:id="allCostColumn" text="Costo" prefWidth="100"/>
+                                    </columns>
+                                </TableView>
+                                
+                                <Button fx:id="refreshReservationsButton" text="Actualizar Lista"/>
+                            </children>
+                        </VBox>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</VBox>

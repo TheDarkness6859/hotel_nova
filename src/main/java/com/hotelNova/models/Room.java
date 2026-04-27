@@ -59,6 +59,10 @@ public class Room {
         return pricePerNight;
     }
 
+    public void setPricePerNight(double pricePerNight) {
+        this.pricePerNight = pricePerNight;
+    }
+
     public boolean isAvailable() {
         return isAvailable;
     }
@@ -69,5 +73,9 @@ public class Room {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

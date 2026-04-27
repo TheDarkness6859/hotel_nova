@@ -66,7 +66,7 @@ public class Guest extends User{
 
     public void setEmail(String email) {
 
-        if (email == null || !email.matches("^[\\\\w.-]+@[a-zA-Z\\\\d.-]+\\\\.[a-zA-Z]{2,6}$")){
+        if (email == null || !email.matches("^[\\w.-]+@[a-zA-Z\\d.-]+\\.[a-zA-Z]{2,6}$")){
 
             throw new IllegalArgumentException("Invalid email format: Please enter a valid email address (e.g., user@example.com)");
 
@@ -90,6 +90,16 @@ public class Guest extends User{
 
     public String getPhone() {
         return phone;
+    }
+
+    private boolean active = true;
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
 }

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.hotelNova.views.GuestDashboardController"
+      spacing="20" alignment="CENTER" style="-fx-padding: 40; -fx-background-color: #f5f5f5;">
+
+    <children>
+        <Text text="Panel de Huésped" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-fill: #2c3e50;"/>
+
+        <Label text="Bienvenido al Hotel Nova" style="-fx-font-size: 18px; -fx-fill: #7f8c8d;"/>
+
+        <VBox spacing="15" alignment="CENTER" style="-fx-padding: 20; -fx-background-color: white; -fx-background-radius: 10;">
+            <children>
+                <Button text="Ver Mis Reservas" prefWidth="200" prefHeight="40"
+                        style="-fx-font-size: 14px; -fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold;"/>
+
+                <Button text="Cerrar Sesión" prefWidth="200" prefHeight="40"
+                        style="-fx-font-size: 14px; -fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            </children>
+        </VBox>
+    </children>
+</VBox>

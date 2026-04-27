@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.hotelNova.views.RoomManagementController" 
+      spacing="15" style="-fx-padding: 20;">
+    
+    <children>
+        <Text text="Gestión de Habitaciones" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+        
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <children>
+                <Label text="Filtrar por tipo:"/>
+                <ComboBox fx:id="typeFilterComboBox" prefWidth="150"/>
+                <Label text="Estado:"/>
+                <ComboBox fx:id="statusFilterComboBox" prefWidth="120"/>
+                <Button fx:id="filterButton" text="Filtrar"/>
+                <Button fx:id="refreshButton" text="Actualizar"/>
+            </children>
+        </HBox>
+        
+        <TableView fx:id="roomTableView" prefHeight="300">
+            <columns>
+                <TableColumn fx:id="roomNumberColumn" text="Número" prefWidth="80"/>
+                <TableColumn fx:id="typeColumn" text="Tipo" prefWidth="120"/>
+                <TableColumn fx:id="priceColumn" text="Precio/Noche" prefWidth="100"/>
+                <TableColumn fx:id="statusColumn" text="Estado" prefWidth="100"/>
+                <TableColumn fx:id="actionsColumn" text="Acciones" prefWidth="150"/>
+            </columns>
+        </TableView>
+        
+        <TitledPane text="Formulario de Habitación" expanded="false">
+            <content>
+                <GridPane hgap="15" vgap="10">
+                    <children>
+                        <Label text="Número:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <TextField fx:id="roomNumberField" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="100"/>
+                        
+                        <Label text="Tipo:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <ComboBox fx:id="roomTypeComboBox" GridPane.rowIndex="1" GridPane.columnIndex="1" prefWidth="150"/>
+                        
+                        <Label text="Precio/Noche:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <TextField fx:id="priceField" GridPane.rowIndex="2" GridPane.columnIndex="1" prefWidth="100"/>
+                        
+                        <Label text="Estado:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                        <CheckBox fx:id="availableCheckBox" text="Disponible" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                        
+                        <HBox spacing="10" GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="2">
+                            <children>
+                                <Button fx:id="saveButton" text="Guardar"/>
+                                <Button fx:id="clearButton" text="Limpiar"/>
+                                <Button fx:id="deleteButton" text="Eliminar"/>
+                            </children>
+                        </HBox>
+                    </children>
+                </GridPane>
+            </content>
+        </TitledPane>
+        
+        <Label fx:id="statusLabel" textFill="green"/>
+    </children>
+</VBox>

@@ -62,7 +62,7 @@ public class DatabaseConnection {
 
     public static void startTransaction () throws SQLException {
 
-        if (thread.get() == null && thread.get().isClosed()){
+        if (thread.get() == null || thread.get().isClosed()){
 
             Connection conn = DriverManager.getConnection(config.getUrl(), config.getUser(), config.getPass());
             conn.setAutoCommit(false);

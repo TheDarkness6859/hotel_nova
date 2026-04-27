@@ -31,7 +31,7 @@ public class UserDAOImpl extends  GenericDAOImpl<User> {
     @Override
     protected User mapRow(ResultSet rs) throws SQLException {
 
-        String id = rs.getNString("id");
+        String id = rs.getString("id");
         String role = rs.getString("role");
         String username = rs.getString("username");
         String password = rs.getString("password");

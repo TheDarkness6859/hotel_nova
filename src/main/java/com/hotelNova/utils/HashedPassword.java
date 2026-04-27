@@ -16,6 +16,7 @@ public class HashedPassword {
 
         try {
 
+            LogManager.addLog("INFO", "before Verify password");
             return BCrypt.checkpw(password, passwordHashed);
 
         }catch (Exception e) {

@@ -1,0 +1,15 @@
+[2026-04-27] [WARNING]User Thedarkness6859 don´t found in database
+[2026-04-27] [INFO]User save correctly in database
+[2026-04-27] [INFO]Commit created correctly in user service
+[2026-04-27] [INFO]User TheDarkness found correctly
+[2026-04-27] [ERROR]Failed to execute findByIdOrName:Method org.postgresql.jdbc.PgResultSet.getNString(int) is not yet implemented.
+[2026-04-27] [WARNING]User TheDarkness6859 don´t found in database
+[2026-04-27] [INFO]User TheDarkness found correctly
+[2026-04-27] [INFO]User TheDarkness found correctly
+[2026-04-27] [INFO]User TheDarkness found correctly
+[2026-04-27] [INFO]User TheDarkness found correctly
+[2026-04-27] [INFO]User TheDarkness found correctly
+[2026-04-27] [INFO]User TheDarkness found correctly
+[2026-04-27] [INFO]User TheDarkness found correctly
+[2026-04-27] [INFO]User TheDarkness found correctly
+[2026-04-27] [INFO]User TheDarkness found correctly

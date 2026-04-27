@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.hotelNova.views.LoginController" 
+      spacing="20" alignment="CENTER" style="-fx-padding: 40; -fx-background-color: #f0f0f0;">
+    
+    <children>
+        <Text text="Hotel Nova" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-fill: #2c3e50;"/>
+        
+        <GridPane hgap="15" vgap="10" alignment="CENTER">
+            <children>
+                <Label text="Usuario:" GridPane.rowIndex="0" GridPane.columnIndex="0" 
+                       style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                <TextField fx:id="usernameField" GridPane.rowIndex="0" GridPane.columnIndex="1" 
+                          prefWidth="200" promptText="Ingrese usuario"/>
+                
+                <Label text="Contraseña:" GridPane.rowIndex="1" GridPane.columnIndex="0" 
+                       style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                <PasswordField fx:id="passwordField" GridPane.rowIndex="1" GridPane.columnIndex="1" 
+                              prefWidth="200" promptText="Ingrese contraseña"/>
+            </children>
+        </GridPane>
+        
+        <Button fx:id="loginButton" text="Iniciar Sesión" prefWidth="150" prefHeight="40"
+                style="-fx-font-size: 14px; -fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold;"/>
+
+        <Button fx:id="registerButton" text="Registrarse" prefWidth="150" prefHeight="35"
+                style="-fx-font-size: 13px; -fx-background-color: #27ae60; -fx-text-fill: white;"/>
+
+        <Label fx:id="errorLabel" textFill="red" wrapText="true" maxWidth="250"/>
+    </children>
+</VBox>
