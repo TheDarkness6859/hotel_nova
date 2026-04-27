@@ -18,7 +18,7 @@ public abstract class User {
     public User (String id, String username, String password, String role) {
 
         this(username, password, role);
-        this.id = id;
+        setId(id);
 
     }
 
@@ -57,6 +57,12 @@ public abstract class User {
         }
 
         this.role = role;
+    }
+
+    public void setId (String id){
+
+        this.id = id;
+
     }
 
 }
